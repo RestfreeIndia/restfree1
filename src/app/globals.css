@@ -1,0 +1,379 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 142 72% 29%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 72% 29%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Dark theme removed */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground;
+    /* Light mode - subtle gradient background */
+    background: radial-gradient(ellipse at top, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  }
+
+  /* Dark mode - blue to emerald gradient background */
+  .dark body {
+    background: radial-gradient(ellipse at top, #0f172a 0%, #1e293b 30%, #134e4a 70%, #064e3b 100%);
+    background-attachment: fixed;
+  }
+
+  /* Ensure consistent gradient backgrounds for dark mode containers */
+  .dark .bg-background {
+    background: transparent !important;
+  }
+
+  .dark .bg-card {
+    background: rgba(30, 41, 59, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(148, 163, 184, 0.1);
+  }
+}
+
+/* Enhanced animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-from-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-from-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-from-top {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-from-bottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(var(--accent));
+  }
+  50% {
+    background-color: hsl(var(--muted));
+  }
+  100% {
+    background-color: hsl(var(--accent));
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: none; }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+.shine-anim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0.10) 100%);
+  opacity: 0.7;
+  transform: translateX(-100%) skewX(-20deg);
+  animation: shine-move 2.5s infinite linear;
+}
+@keyframes shine-move {
+  0% { transform: translateX(-100%) skewX(-20deg); }
+  100% { transform: translateX(100%) skewX(-20deg); }
+}
+
+/* ===== UNIFIED GRADIENT THEME SYSTEM ===== */
+/* This overrides ALL colors to use the unified gradient: bg-gradient-to-r from-blue-700 to-emerald-600 */
+
+@layer utilities {
+  /* Main unified gradient */
+  .unified-gradient {
+    background: linear-gradient(to right, #1d4ed8, #059669) !important;
+  }
+  
+  .unified-gradient-hover:hover {
+    background: linear-gradient(to right, #1e40af, #047857) !important;
+  }
+  
+  .unified-gradient-light {
+    background: linear-gradient(to right, #dbeafe, #d1fae5) !important;
+  }
+  
+  /* Text gradient version */
+  .unified-text-gradient {
+    background: linear-gradient(to right, #1d4ed8, #059669) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+
+  /* ===== OVERRIDE ALL GREEN COLORS WITH UNIFIED GRADIENT ===== */
+  
+  /* Background colors */
+  .bg-green-50 { background: linear-gradient(to right, #eff6ff, #f0fdf4) !important; }
+  .bg-green-100 { background: linear-gradient(to right, #dbeafe, #dcfce7) !important; }
+  .bg-green-200 { background: linear-gradient(to right, #bfdbfe, #bbf7d0) !important; }
+  .bg-green-300 { background: linear-gradient(to right, #93c5fd, #86efac) !important; }
+  .bg-green-400 { background: linear-gradient(to right, #60a5fa, #4ade80) !important; }
+  .bg-green-500 { background: linear-gradient(to right, #3b82f6, #22c55e) !important; }
+  .bg-green-600 { background: linear-gradient(to right, #1d4ed8, #059669) !important; }
+  .bg-green-700 { background: linear-gradient(to right, #1e40af, #047857) !important; }
+  .bg-green-800 { background: linear-gradient(to right, #1e3a8a, #065f46) !important; }
+  .bg-green-900 { background: linear-gradient(to right, #172554, #064e3b) !important; }
+  
+  /* Hover background colors */
+  .hover\:bg-green-50:hover { background: linear-gradient(to right, #eff6ff, #f0fdf4) !important; }
+  .hover\:bg-green-100:hover { background: linear-gradient(to right, #dbeafe, #dcfce7) !important; }
+  .hover\:bg-green-200:hover { background: linear-gradient(to right, #bfdbfe, #bbf7d0) !important; }
+  .hover\:bg-green-300:hover { background: linear-gradient(to right, #93c5fd, #86efac) !important; }
+  .hover\:bg-green-400:hover { background: linear-gradient(to right, #60a5fa, #4ade80) !important; }
+  .hover\:bg-green-500:hover { background: linear-gradient(to right, #3b82f6, #22c55e) !important; }
+  .hover\:bg-green-600:hover { background: linear-gradient(to right, #1d4ed8, #059669) !important; }
+  .hover\:bg-green-700:hover { background: linear-gradient(to right, #1e40af, #047857) !important; }
+  .hover\:bg-green-800:hover { background: linear-gradient(to right, #1e3a8a, #065f46) !important; }
+  .hover\:bg-green-900:hover { background: linear-gradient(to right, #172554, #064e3b) !important; }
+  
+  /* Text colors - convert to gradient text */
+  .text-green-600 { 
+    background: linear-gradient(to right, #1d4ed8, #059669) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+  .text-green-700 { 
+    background: linear-gradient(to right, #1e40af, #047857) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+  .text-green-800 { 
+    background: linear-gradient(to right, #1e3a8a, #065f46) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+  
+  /* Hover text colors */
+  .hover\:text-green-600:hover { 
+    background: linear-gradient(to right, #1d4ed8, #059669) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+  .hover\:text-green-700:hover { 
+    background: linear-gradient(to right, #1e40af, #047857) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+  
+  /* Border colors */
+  .border-green-600 { border-color: #1d4ed8 !important; }
+  .border-green-700 { border-color: #1e40af !important; }
+  .hover\:border-green-500:hover { border-color: #3b82f6 !important; }
+  .hover\:border-green-600:hover { border-color: #1d4ed8 !important; }
+  
+  /* Ring/focus colors */
+  .focus\:ring-green-500:focus { --tw-ring-color: #3b82f6 !important; }
+  .focus\:ring-green-600:focus { --tw-ring-color: #1d4ed8 !important; }
+  
+  /* ===== OVERRIDE OTHER INCONSISTENT COLORS ===== */
+  
+  /* Force ALL primary colors to use gradient */
+  .bg-primary { background: linear-gradient(to right, #1d4ed8, #059669) !important; }
+  .hover\:bg-primary:hover { background: linear-gradient(to right, #1e40af, #047857) !important; }
+  .text-primary { 
+    background: linear-gradient(to right, #1d4ed8, #059669) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+  
+  /* Override any blue colors that don't fit the theme */
+  .bg-blue-600 { background: linear-gradient(to right, #1d4ed8, #059669) !important; }
+  .bg-blue-700 { background: linear-gradient(to right, #1d4ed8, #059669) !important; }
+  .hover\:bg-blue-600:hover { background: linear-gradient(to right, #1e40af, #047857) !important; }
+  .hover\:bg-blue-700:hover { background: linear-gradient(to right, #1e40af, #047857) !important; }
+  
+  /* Override teal colors */
+  .bg-teal-600 { background: linear-gradient(to right, #1d4ed8, #059669) !important; }
+  .bg-teal-700 { background: linear-gradient(to right, #1e40af, #047857) !important; }
+  
+  /* Override emerald colors */
+  .bg-emerald-600 { background: linear-gradient(to right, #1d4ed8, #059669) !important; }
+  .bg-emerald-700 { background: linear-gradient(to right, #1e40af, #047857) !important; }
+}
